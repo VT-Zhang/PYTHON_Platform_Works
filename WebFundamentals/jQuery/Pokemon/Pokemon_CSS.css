@@ -1,0 +1,29 @@
+*{
+   margin: 0px;
+   padding: 0px;
+}
+
+#wrapper{
+    width:1310px;
+    height: auto;
+}
+
+#header{
+    height:80px;
+    width: 1300px;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#poke{
+    width:1300px;
+    height: auto;
+}
+
+img:hover{
+    cursor: pointer;
+    background-image: url(ball.png);
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery Practice</title>
+
+        <style>
+            .b_and_i{
+                font-style: italic;
+                font-weight: bold;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css"  href="jQuery_Practice_CSS.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+        <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                $("#click_button").click(function(){
+                    alert("Hello, this is my first jQuery function assignment.");
+                });
+                $("#hide_button").click(function(){
+                    $("#hide_txt").hide();
+                });
+                $("#show_button").click(function(){
+                    $("#hide_txt").show();
+                });
+                $("#toggle_button").click(function(){
+                    $("#toggle_txt").toggle(1200);
+                });
+                $("#slideup_button").click(function(){
+                    $("#slide_txt").slideUp(1200);
+                });
+                $("#slidedown_button").click(function(){
+                    $("#slide_txt").slideDown(1200);
+                });
+                $("#slidetoggle_button").click(function(){
+                    $("#slidetoggle_txt").slideToggle(800);
+                });
+                $("#fadeout_button").click(function(){
+                    $("#fade_txt").fadeOut(800);
+                });
+                $("#fadein_button").click(function(){
+                    $("#fade_txt").fadeIn(800);
+                });
+                $("#addclass_button").click(function(){
+                    $("#addclass_txt").addClass("b_and_i");
+                });
+                $("#before_button").click(function(){
+                    $("#before_txt").before("<b>Just added these words BEFORE the sentence.</b>");
+                });
+                $("#after_button").click(function(){
+                    $("#before_txt").after("<b>Just added these words AFTER the sentense.</b>");
+                });
+                $("#append_button").click(function(){
+                    $("#append_txt").append("<b>APPEND!</b>");
+                });
+                $("#html_button").click(function(){
+                    $("#html_txt").html("<p><b>I just changed the whole HTML!!</b></p>");
+                });
+                $("#attr_button").click(function(){
+                    $("#attr_img").attr("src", "http://www.gourmetsleuth.com/images/default-source/articles/big-white-chicken.jpg");
+                });
+                $("#text_button").click(function(){
+                    var value = $("#html_txt").text();
+                    $("#text_txt").text(value);
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <p>My jQuery Practice</p>
+        </div>
+        <div class="wrapper">
+            <div class="jFunctions">
+                <p class="title">.click()</p>
+                <p class="body"> Click this button to popup the dialog box.</p>
+                <p class="button" id="click_button">Click</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.hide() and .show()</p>
+                <p class="body" id="hide_txt"> Click the hide button to hide this sentence.
+                and click the show button to bring back the hided sentence.</p>
+                <p class="button" id="hide_button">Hide</p>
+                <p class="button" id="show_button">Show</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.toggle()</p>
+                <p class="body" id="toggle_txt"> Click this button to toggle this sentence.
+                and click the button again to toggle the sentence back.</p>
+                <p class="button" id="toggle_button">Toggle</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.slideDown() and .slideUp()</p>
+                <p class="body" id="slide_txt"> Click this button to slide up and down the sentence.</p>
+                <p class="button" id="slideup_button">SlideUp</p>
+                <p class="button" id="slidedown_button">SlideDown</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.slideToggle()</p>
+                <p class="body" id="slidetoggle_txt"> Click this button to slide toggle the sentence.</p>
+                <p class="button" id="slidetoggle_button">Slide Toggle</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.fadeIn() and .fadeOut()</p>
+                <p class="body" id="fade_txt"> Click this button to fade out and in the sentence.</p>
+                <p class="button" id="fadeout_button">Fade Out</p>
+                <p class="button" id="fadein_button">Fade In</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.addClass()</p>
+                <p class="body" id="addclass_txt"> Click this button to bold and italicize the sentence.</p>
+                <p class="button" id="addclass_button">Add Class</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.before() and .after()</p>
+                <p class="body" id="before_txt"> Click this button to add words before and after the sentence.</p>
+                <p class="button" id="before_button">Before</p>
+                <p class="button" id="after_button">After</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.append()</p>
+                <p class="body" id="append_txt"> Click this button to add words to the sentence.</p>
+                <p class="button" id="append_button">Append</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.html()</p>
+                <p class="body" id="html_txt"> Click this button change HTML style to the sentence.</p>
+                <p class="button" id="html_button">HTML</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.attr()</p>
+                <p class="body"> Click this button change the attribute of the image :)</p>
+                <img class="body" id="attr_img" src="http://www.biologicaldiversity.org/news/press_releases/2016/images/BaldEagle_RobinSilver.jpg" alt="eagle">
+                <p class="button" id="attr_button">Attr</p>
+            </div>
+            <div class="jFunctions">
+                <p class="title">.val() and .text()</p>
+                <p class="body" id="text_txt"> Click this button to change of the text of the sentence same as the HTML</p>
+                <p class="button" id="text_button">Text</p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>User Form Practice</title>
+        <link rel="stylesheet" type="text/css"  href="User_Form_CSS.css">
+        <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+        <script>
+
+            $(document).ready(function(){
+               $("#button").click(function(){
+                   $("#first_name").append($("#first").val());
+               });
+               $("#button").click(function(){
+                   $("#last_name").append($("#last").val());
+               });
+               $("#button").click(function(){
+                   $("#email_address").append($("#email").val());
+               });
+               $("#button").click(function(){
+                   $("#contact_number").append($("#contact").val());
+               });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <ul>
+                <li>First Name</li>
+                <li>Last Name</li>
+                <li>Email Address</li>
+                <li>Contact#</li>
+            </ul>
+        </div>
+        <div id="new_column">
+            <ul>
+                <li id="first_name">
+
+                </li>
+                <li id="last_name">
+
+                </li>
+                <li id="email_address">
+
+                </li>
+                <li id="contact_number">
+
+                </li>
+
+            </ul>
+
+        </div>
+        <div class="main">
+            <div class="title">
+                Add Users
+            </div>
+            <div class="table">
+                <form>
+                <ul>
+                    <li>First Name:<input id="first" type="text" name="first"/></li>
+                    <li>Last Name:<input id="last" type="text" name="last"/></li>
+                    <li>Email Address:<input id="email" type="text" name="email"/></li>
+                    <li>Contact No.:<input id="contact" type="text" name="contact"/></li>
+                </ul>
+                </form>
+            </div>
+            <div id="button">
+                <input type="submit" value="Add User"/>
+            </div>
+        </div>
+
+
+    </body>
+</html>

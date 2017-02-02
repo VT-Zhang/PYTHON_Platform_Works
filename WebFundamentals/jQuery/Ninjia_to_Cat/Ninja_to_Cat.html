@@ -1,0 +1,39 @@
+<!--Created by Jian Zhang @ Coding Dojo, on 01/31/2017 -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Donald to Donkey</title>
+        <link rel="stylesheet" type="text/css"  href="Ninja_to_Cat_CSS.css">
+        <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+        <script>
+            $(document).ready(function(){
+                $(".d1").click(function(){
+                    $(this).attr("src","Donkey1.jpg");
+                });
+                $(".d2").click(function(){
+                    $(this).attr("src","Donkey2.jpg");
+                });
+                $(".d3").click(function(){
+                    $(this).attr("src","Donkey3.jpg");
+                });
+                $(".d4").click(function(){
+                    $(this).attr("src","Donkey4.jpg");
+                });
+                $(".d5").click(function(){
+                    $(this).attr("src","Donkey5.jpg");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <img class="pic d1" src="Donald1.jpg" alt="Donald" alt-src="Donkey1.jpg">
+            <img class="pic d2" src="Donald2.jpg" alt="Donald" alt-src="Donkey2.jpg">
+            <img class="pic d3" src="Donald3.jpg" alt="Donald" alt-src="Donkey3.jpg">
+            <img class="pic d4" src="Donald4.jpg" alt="Donald" alt-src="Donkey4.jpg">
+            <img class="pic d5" src="Donald5.jpg" alt="Donald" alt-src="Donkey5.jpg">
+        </div>
+    </body>
+</htm>

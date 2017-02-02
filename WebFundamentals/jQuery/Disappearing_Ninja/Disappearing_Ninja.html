@@ -1,0 +1,44 @@
+<!--Created by Jian Zhang @ Coding Dojo, on 01/31/2017 -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Disappearing Ninja</title>
+        <link rel="stylesheet" type="text/css"  href="Disappearing_Ninja_CSS.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+        <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".pic").click(function(){
+                    $(this).hide();
+                })
+                $(".button").click(function(){
+                    $(".pic").show();
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <h3>jQuery - Assignment 1</h3>
+            </div>
+            <div class="line1">
+                <image class="pic" src="firefox.png" alt="firefox">
+                <image class="pic" src="firefox.png" alt="firefox">
+                <image class="pic" src="firefox.png" alt="firefox">
+                <image class="pic" src="firefox.png" alt="firefox">
+            </div>
+            <div class="line2">
+                <image class="pic" src="firefox.png" alt="firefox">
+                <image class="pic" src="firefox.png" alt="firefox">
+                <image class="pic" src="firefox.png" alt="firefox">
+                <image class="pic" src="firefox.png" alt="firefox">
+            </div>
+            <div class="bottom">
+                <p class="button">Restore</p>
+            </div>
+        </div>
+    </body>
+</html>

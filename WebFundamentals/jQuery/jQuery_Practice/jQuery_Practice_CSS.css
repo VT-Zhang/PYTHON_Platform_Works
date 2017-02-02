@@ -1,0 +1,67 @@
+*{
+   margin: 0px;
+   padding: 0px;
+}
+
+.wrapper{
+    width: 996px;
+    height: auto;
+    display: block;
+    margin-left: 100px;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    border-left:  2px solid black;
+    border-right:  2px solid black;
+    border-bottom:  2px solid black;
+    background: linear-gradient(#0769ad, #beddf3);
+}
+
+.header{
+    width: 996px;
+    height: 70px;
+    margin-top: 50px;
+    margin-left: 100px;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Roboto Slab', serif;
+    border: 2px solid black;
+    background: linear-gradient(#a1afb9, #d6e5f0);
+}
+
+.jFunction{
+    width: 1000px;
+    height: 80px;
+    text-align: center;
+    outline: 2px solid black;
+    display: block;
+}
+
+.title{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.body{
+    font-size: 20px;
+}
+.button{
+    width: 120px;
+    height: 35px;
+    color: white;
+    padding-top: 10px;
+    margin-left: 440px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: center;
+    background: linear-gradient(#67B4EE, #6096C0);
+    border-radius: 3px;
+    box-shadow: 3px 3px 3px grey;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: blue;
+}

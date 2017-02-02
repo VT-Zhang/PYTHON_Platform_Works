@@ -1,0 +1,62 @@
+*{
+   margin: 0px;
+   padding: 0px;
+   outline: 1px dotted green;
+}
+
+#left_wrapper{
+    width:490px;
+    height:auto;
+    padding-left: 10px;
+}
+
+#name{
+    width: 300;
+    height: 50px;
+    display: block;
+}
+
+.name_box{
+    size: 12;
+}
+
+#des{
+    width: 300px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+#des_box{
+    height: 60px;
+    margin-top: 10px;
+}
+
+#button{
+    width: 300px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+#right_wrapper{
+    width:500px;
+    height: 500px;
+}
+
+#left_wrapper, #right_wrapper{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.name_card{
+    width: 300px;
+    height:110px;
+    text-align: center;
+    padding-top: 20px;
+    border: 1px solid black;
+
+}
+
+.description{
+    margin-top: 40px;
+    display:none;
+}

@@ -1,0 +1,70 @@
+*{
+   margin: 0px;
+   padding: 0px;
+   /*outline: 1px dotted red;*/
+}
+
+#wrapper{
+    width:1310px;
+    height: auto;
+    background: linear-gradient(#1c8cda, #d6e5f0);
+}
+
+#header{
+    height:80px;
+    width: 1050px;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Roboto Slab', serif;
+    color: white;
+}
+
+#main{
+    width:1050px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img:hover{
+    cursor: pointer;
+    background-image: url(Poke_Ball.png);
+}
+
+.pokes{
+    height:120px;
+    width: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#side{
+    width: 170px;
+    height: 380px;
+    padding: 20px;
+    background-color: red;
+    font-family: 'Roboto Slab', serif;
+    position: fixed;
+    margin-left: 1040px;
+
+}
+
+#bottom{
+    display:flex;
+}
+
+#info{
+    background-color: white;
+    height: 360px;
+    width: 145px;
+    padding-left: 25px;
+    padding-top: 10px;
+}
+
+.types{
+    margin-left: 35px;
+}

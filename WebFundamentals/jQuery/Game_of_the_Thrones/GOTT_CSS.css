@@ -1,0 +1,84 @@
+*{
+    font-family: 'EB Garamond', serif;
+    padding: 0px;
+    margin: 0px;
+    color: white;
+}
+
+#wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding-top: 20px;
+    width: 1200px;
+    height: 655px;
+    outline: 1px groove black;
+    box-shadow: 5px 5px 5px black;
+    background-image: url(back.jpg);
+}
+
+#header{
+    font-size: 40px;
+    height: 45px;
+    width: 1200px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+#middle{
+    width: 1100px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /*border: 1px solid black;*/
+
+}
+
+.house{
+    height: 200px;
+    width: 200px;
+    outline: 1px solid white;
+}
+
+.house:hover{
+    cursor: pointer;
+    box-shadow: 10px 10px 10px white;
+}
+
+#stark{
+    height: 200px;
+    width: 200px;
+    background-image: url(stark.jpg);
+}
+
+#tar{
+    height: 200px;
+    width: 200px;
+    background-image: url(tar.jpg);
+}
+
+#lannister{
+    height: 200px;
+    width: 200px;
+    background-image: url(lannister.jpg);
+}
+
+#baratheon{
+    height: 200px;
+    width: 200px;
+    background-image: url(baratheon.jpg);
+}
+
+#details{
+    width: 1000px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    /*border: 1px solid black;*/
+    font-size: 25px;
+}

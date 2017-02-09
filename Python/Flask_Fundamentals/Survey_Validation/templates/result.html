@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Result</title>
+        <style>
+            *{
+                margin:0px;
+                padding:0px
+            }
+            #wrapper{
+                margin-left: auto;
+                margin-right:auto;
+                margin-top: 20px;
+                height: 300px;
+                width: 800px;
+                font-size: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <h2>Submitted Info</h2>
+            <p>
+                Name: {{name}}
+                {% with messages = get_flashed_messages() %}
+                 {% if messages %}
+                   {% for message in messages %}
+                     <p>{{message}}</p>
+                   {% endfor %}
+                 {% endif %}
+                {% endwith %}
+            </p>
+            <p>
+                Dojo Location: {{location }}
+            </p>
+            <p>
+                Favorite Language: {{language}}
+            </p>
+            <p>
+                Comment: {{text}}
+                {% with messages = get_flashed_messages() %}
+                 {% if messages %}
+                   {% for message in messages %}
+                     <p>{{message}}</p>
+                   {% endfor %}
+                 {% endif %}
+                {% endwith %}
+            </p>
+            <form action = 'goback' method='post'>
+                <input type='submit' value='Go Back'>
+            </form>
+        </div>
+
+    </body>
+</html>

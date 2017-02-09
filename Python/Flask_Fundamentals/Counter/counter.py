@@ -15,12 +15,12 @@ def index():
 
 @app.route('/plus2', methods = ['POST'])
 def plus2():
-    session['counter'] += 2
-    return render_template("counter.html")
+    session['counter'] += 1
+    return redirect('/')
 
 @app.route('/clear', methods = ['POST'])
 def clearSession():
     session['counter'] = 0
-    return render_template("counter.html")
+    return redirect("/")
 
 app.run(debug=True)

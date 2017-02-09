@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ninja Gold</title>
+    <style>
+        .{
+            margin:0px;
+            padding:0px;
+        }
+        #wrapper{
+            width: 1000px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            /*background-color: yellow;*/
+
+        }
+        #header{
+            width: 300px;
+            height: 60px;
+            /*background-color: green;*/
+            display: flex;
+            align-items: center;
+            padding-left: 24px;
+        }
+        #gold_box{
+            height:24px;
+            width: 95px;
+            /*background-color: brown;*/
+            padding-top: 6px;
+            padding-left: 5px;
+        }
+        #main{
+            width: 1000px;
+            height: 200px;
+            display: flex;
+            justify-content: space-around;
+            /*background-color: lightblue;*/
+        }
+        .place{
+            height: 170px;
+            width: 150px;
+            outline: 1px solid black;
+            padding-left: 50px;
+            padding-top: 30px;
+        }
+        #bottom{
+            width: 975px;
+            height:250px;
+            padding-left: 25px;
+            margin-top: 20px;
+        }
+        #log{
+            width: 940px;
+            height:200px;
+            outline: 1px solid black;
+            overflow-y:scroll;
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
+
+    </style>
+    </head>
+    <body>
+        <div id='wrapper'>
+            <div id='header'>
+                Your Gold: <p id="gold_box">${{session['money']}}</p>
+            </div>
+            <div id='main'>
+                <div class='place' id='farm'>
+                    <h3>Farm</h3>
+                    <p>(earns 10-20 golds)</p>
+                    <form action='/process' method='post'>
+                        <input type='hidden' name='building' value='farm' />
+                        <input type='submit' value='Find Gold!' />
+                    </form>
+                </div>
+                <div class='place' id='cave'>
+                    <h3>Cave</h3>
+                    <p>(earns 5-10 golds)</p>
+                    <form action='/process' method='post'>
+                        <input type='hidden' name='building' value='cave' />
+                        <input type='submit' value='Find Gold!' />
+                    </form>
+                </div>
+                <div class='place' id='house'>
+                    <h3>House</h3>
+                    <p>(earns 2-5 golds)</p>
+                    <form action='/process' method='post'>
+                        <input type='hidden' name='building' value='house' />
+                        <input type='submit' value='Find Gold!' />
+                    </form>
+                </div>
+                <div class='place' id='farm'>
+                    <h3>Casino</h3>
+                    <p>(earns/looses 0-50 golds)</p>
+                    <form action='/process' method='post'>
+                        <input type='hidden' name='building' value='casino' />
+                        <input type='submit' value='Find Gold!' />
+                    </form>
+                </div>
+            </div>
+            <div id='bottom'>
+                Activities:
+                <div id='log'>
+                    <p>
+                        {{session['log']|safe}}
+                    </p>
+                </div>
+            </div>
+            <form action='/reset' method='post'>
+                <input type='submit' value='Reset' />
+            </form>
+        </div>
+
+    </body>
+</html>

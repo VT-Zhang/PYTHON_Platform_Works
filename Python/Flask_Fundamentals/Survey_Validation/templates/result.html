@@ -22,34 +22,30 @@
         <div id="wrapper">
             <h2>Submitted Info</h2>
             <p>
-                Name: {{name}}
-                {% with messages = get_flashed_messages() %}
-                 {% if messages %}
-                   {% for message in messages %}
-                     <p>{{message}}</p>
-                   {% endfor %}
-                 {% endif %}
-                {% endwith %}
+                Name: {{session['name']}}
             </p>
             <p>
-                Dojo Location: {{location }}
+                Dojo Location: {{session['location'] }}
             </p>
             <p>
-                Favorite Language: {{language}}
+                Favorite Language: {{session['language']}}
             </p>
             <p>
-                Comment: {{text}}
-                {% with messages = get_flashed_messages() %}
-                 {% if messages %}
-                   {% for message in messages %}
-                     <p>{{message}}</p>
-                   {% endfor %}
-                 {% endif %}
-                {% endwith %}
+                Comment: {{session['text']}}
             </p>
             <form action = 'goback' method='post'>
                 <input type='submit' value='Go Back'>
             </form>
+        </div>
+        <div>
+
+            {% with messages = get_flashed_messages() %}
+             {% if messages %}
+               {% for message in messages %}
+                 <p>{{message}}</p>
+               {% endfor %}
+             {% endif %}
+            {% endwith %}
         </div>
 
     </body>

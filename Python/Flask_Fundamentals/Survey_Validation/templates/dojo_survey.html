@@ -31,14 +31,14 @@
             <form action = '/result' method='post'>
                 Your Name: <input type='text' name='name' />
                 Dojo Location: <select name='location' >
-                      <option value="">Select Location</option>
+                      <option value="none">Select Location</option>
                       <option value="San Jose">San Jose</option>
                       <option value="Los Angeles">Los Angeles</option>
                       <option value="New York">New York</option>
                       <option value="Washington DC">Washington DC</option>
                 </select>
                 Favorite Language: <select name='language' >
-                      <option value="">Select Language</option>
+                      <option value="none">Select Language</option>
                       <option value="Python">Python</option>
                       <option value="Java">Java</option>
                       <option value="C">C</option>
@@ -48,6 +48,15 @@
                 </textarea>
                 <input type='submit' value='Button'>
             </form>
+            <div>
+                {% with messages = get_flashed_messages() %}
+                 {% if messages %}
+                   {% for message in messages %}
+                     <p>{{message}}</p>
+                   {% endfor %}
+                 {% endif %}
+                {% endwith %}
+            </div>
         </div>
 
     </body>

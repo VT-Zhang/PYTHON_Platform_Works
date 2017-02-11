@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/jianzhang/Dropbox/Dojo/Python/myEnvironment/py2FlaskEnv"
+VIRTUAL_ENV="/Users/jianzhang/Dropbox/Dojo/Python/myEnvironment/py2flaskenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Full Friends</title>
+        <style>
+            h1 {
+                height: auto;
+                width: 1100px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+            #main{
+                height: auto;
+                width: 1100px;
+                margin-left: auto;
+                margin-right: auto;
+                display:flex;
+                justify-content: space-around;
+            }
+            .block{
+                height: 250px;
+                width: 250px;
+                border: 1px solid black;
+                padding-left: 10px;
+            }
+            #new{
+                height: auto;
+                width: 1100px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+            #button{
+                display:flex;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>These are all my friends!</h1>
+        <div id="main">
+            {% for friends in all_friends: %}
+            <div class="block">
+                <p>ID: {{ friends['id'] }}</p>
+                <p>First Name: {{ friends['first_name'] }}</p>
+                <p>Last Name: {{ friends['last_name'] }}</p>
+                <p>Email: {{ friends['email'] }}</p>
+                <p>TimeStamp: {{ friends['created_at'] }}</p>
+                <div id="button">
+                    <form action='/friends/{{friends['id']}}/goto', method='GET'>
+                        <input type='submit' value="Edit" />
+                    </form>
+                    <form action='/friends/{{friends['id']}}/delete', method='POST'>
+                        <input type='submit' value="Delete" />
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="new">
+        <h2>Add A New Friend</h2>
+            <form action='/friends', method='POST'>
+                <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+                <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+                <label for="email">Email:<input type="text" name="email" id="email"></label>
+                <input type="submit" value="Add">
+            </form>
+        </div>
+
+    </body>
+</html>

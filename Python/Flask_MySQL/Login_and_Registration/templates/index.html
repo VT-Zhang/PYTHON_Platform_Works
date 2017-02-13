@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Registraton Form</title>
+        <style>
+            #error {
+                margin-left: 20px;
+                color: {{session['color']}};
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Registration Form</h2>
+        <form action='/submit' method = 'post'>
+            <ul>
+                <li>First Name: <input type='text' name='first' /></li>
+                <li>Last Name: <input type='text' name='last' /></li>
+                <li>Email: <input type='text' name='email' /></li>
+                <li>Password: <input type='text' name='password' /></li>
+                <li>Confirm Password: <input type='text' name='confirm' /></li>
+                <p></p>
+                <input type="submit" vale="Submit" />
+            </ul>
+        </form>
+        <hr />
+        <h2>Please Enter Your Email and Password</h2>
+        <form action='/login' method='POST'>
+              <label for="email">Email: <input type="text" name="email" id="email"></label>
+              <label for="password">Password: <input type="text" name="password" id="password"></label>
+              <input type="submit" value="Login">
+        </form>
+        <div id="error">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  {{message|safe}}
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#button").click(function(){
+                    var content = "<div class='post'>";
+                    content += "<p>{{session['first_name']}} {{session['last_name']}}</p>";
+                    content += "<p>{{session['message']}}</p></div>";
+                    $("#news").append(content);
+                });
+            });
+        </script>
+        <style>
+
+            #message{
+                height:20px;
+                width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+            #wrapper{
+                width: 1000px;
+                height: auto;
+                background-color: yellow;
+                margin-left: auto;
+                margin-right: auto;
+                font-family: 'Roboto Slab', serif;
+            }
+            #header{
+                width: 998px;
+                height: 100px;
+                background-color: green;
+                border: 1px solid black;
+                display: flex;
+
+            }
+            #logo{
+                width: 300px;
+                height:65px;
+                background: brown;
+                text-align: center;
+                padding-top: 35px;
+                font-size: 25px;
+            }
+            #welcome{
+                text-align: right;
+                height:65px;
+                width: 200px;
+                padding-top: 35px;
+                margin-left: 300px;
+            }
+            #log_off{
+                height:65px;
+                width: 100px;
+                padding-top: 35px;
+                margin-left: 120px;
+            }
+            #post_message{
+                width: 800px;
+                height: 150px;
+                background-color: teal;
+                margin-left: 50px;
+            }
+            #news{
+                width: 800px;
+                height: 500px;
+                background-color: lightblue;
+                margin-left: 50px;
+            }
+            .post{
+                width: 700px;
+                height: 100px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="message">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  {{message|safe}}
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+        </div>
+        <div id="wrapper">
+            <div id="header">
+                <div id="logo">
+                    <span>Coding Dojo Wall</span>
+                </div>
+                <div id="welcome">
+                    <span>Welcome, {{session['first_name']}}!</span>
+                </div>
+                <div id="log_off">
+                    <a href="/">Log Off</a>
+                </div>
+            </div>
+            <div id="post_message">
+                <form action='/post', method='POST', id="post_form">
+                    <p>Post a message</p>
+                    <textarea rows="4" cols="130" name="post_text" form="post_form">
+                        Post your text here...</textarea>
+                    <input type='submit' value='Post a message' id="button" />
+                </form>
+            </div>
+            <div id="news">
+
+            </div>
+        </div>
+    </body>
+</html>

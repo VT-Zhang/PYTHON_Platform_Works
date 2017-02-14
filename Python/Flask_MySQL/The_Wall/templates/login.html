@@ -1,0 +1,83 @@
+<!-- Created by Jian Zhang @ Coding Dojo on 02/13/2017 -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>The Wall Login Page</title>
+        <style>
+            #wrapper{
+                margin-left: auto;
+                margin-right: auto;
+                height: auto;
+                width: 800px;
+            }
+            #header{
+                margin-top: 50px;
+                margin-left: auto;
+                margin-right: auto;
+                height:50px;
+                width:700px;
+                text-align: center;
+                font-size: 30px;
+            }
+            #log_in{
+                height: 300px;
+                width: 220px;
+                margin-top: 100px;
+                margin-left: auto;
+                margin-right: auto;
+                /*background-color: green;*/
+                justify-content: space-around;
+                font-size: 20px;
+                text-align: right;
+
+            }
+            #error {
+                margin-left: auto;
+                margin-right: auto;
+                color: {{session['color']}};
+
+            }
+            #wall{
+                height:410px;
+                width:1000px;
+                margin-left: -200px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <audio src="{{ url_for('static', filename='pink.mp3') }}" autoplay></audio>
+        <div id="wrapper">
+            <div id="header">
+                <p>Welcome to THE WALL</p>
+                <p>Please enter your credentials.</p>
+            </div>
+            <div id="wall">
+                <img src="{{ url_for('static', filename='wall.jpg') }}" alt="wall.jpg">
+            </div>
+            <div id="log_in">
+                <form action='/login' method='post'>
+                    <p>Email: <input type='text' name='email' /></p>
+                    <p>Password: <input type='text' name='password' /></p>
+                    <input type='submit' value='Login' />
+                </form>
+                <br />
+                <form action='/new_user' method='GET'>
+                    <p>Not A User Yet?</p>
+                    <a href="/new_user">Register Here</a>
+                </form>
+            </div>
+            <div id="error">
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    {% for message in messages %}
+                      {{message|safe}}
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Disappearing Ninja</title>
+        <style>
+            #no_ninja{
+                {{session['display_off']}}
+            }
+            #all_four{
+                display: none;
+                {{session['display']}}
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="no_ninja">
+            {{session['no_ninja']|safe}}
+        </div>
+
+        <div id='all_four'>
+            {{session['four']|safe}}
+        </div>
+    </body>
+</html>

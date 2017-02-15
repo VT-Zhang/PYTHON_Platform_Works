@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Display Time</title>
+        {% load staticfiles %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="{% static 'timedisplay/js/time.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'timedisplay/css/time.css' %}">
+
+    </head>
+    <body>
+        <div id="box">
+            <span>The Current Time and Date:</span>
+        </div>
+        <div id="time">
+            <div id="clockbox"></div>
+        </div>
+
+    </body>
+</html>

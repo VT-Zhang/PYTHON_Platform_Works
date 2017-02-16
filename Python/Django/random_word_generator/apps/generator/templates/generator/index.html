@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Random Word Generator</title>
+        <style>
+            #wrapper{
+                margin-left: auto;
+                margin-right: auto;
+                height:400px;
+                width: 500px;
+                border: 1px solid black;
+                text-align: center;
+            }
+            #box{
+                width: 400px;
+                height: 50px;
+                border: 1px solid black;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 20px;
+                padding-top: 20px;
+            }
+        </style>
+        <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#button").click(function(){
+                    var text = "";
+                    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                    for( var i=0; i < 14; i++ )
+                        text += possible.charAt(Math.floor(Math.random() * possible.length));
+                    document.getElementById('box').innerHTML=text;
+                });
+            });
+        </script> -->
+    </head>
+    <body>
+        <div id="wrapper">
+            <p id="header">
+                Random Word (attemp #{{request.session.counter}})
+            </p>
+            <p id="box">
+                {{request.session.word}}
+            </p>
+            <form action = "/submit" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Generate" id="button"/>
+            </form>
+        </div>
+    </body>
+</html>

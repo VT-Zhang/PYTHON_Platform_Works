@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Result</title>
+        <style>
+            *{
+                margin:0px;
+                padding:0px
+            }
+            #wrapper{
+                margin-left: auto;
+                margin-right:auto;
+                margin-top: 20px;
+                height: 250px;
+                width: 350px;
+                font-size: 25px;
+                border: 1px solid black;
+                padding-left: 20px;
+                padding-top: 10px;
+            }
+            #box{
+                height: 40px;
+                width: 350px;
+                background-color: #aecba0;
+                margin-left: auto;
+                margin-right:auto;
+                border: 1px solid black;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <span>Thanks for submitting this form! You have submitted this form {{request.session.count}} times now.</span>
+        </div>
+        <div id="wrapper">
+            <h3><u>Submitted Info</u></h3>
+            <p>
+                Name: {{request.session.name}}
+            </p>
+            <p>
+                Dojo Location: {{request.session.location}}
+            </p>
+            <p>
+                Favorite Language: {{request.session.language}}
+            </p>
+            <p>
+                Comment: {{request.session.text}}
+            </p>
+            <form action = 'goback' method='post'>
+                {% csrf_token %}
+                <input type='submit' value='Go Back'>
+            </form>
+        </div>
+
+    </body>
+</html>

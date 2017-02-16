@@ -1,37 +1,25 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
     <head>
         <meta charset="utf-8">
         <title>Ninjas</title>
-        <!-- <script type="text/javascript">
-            $(document).ready(function(){
-                var aaa = {{color}};
-                if (aaa == blue){
-                    var content = "{% load staticfiles %}";
-                    content += "<img src='{% static 'nin/img/blue.jpg' %}'/>";
-                    $("#pic").html(content);
-                }
-            });
-        </script> -->
-    </head>
-    <body>
-        {{color}}
-        {% load staticfiles %}
 
-        {% if {{color}} == "blue" %}
+    <body>
+        {% if color == "blue" %}
             <img src="{% static 'nin/img/blue.jpg' %}"/>
 
-        {%elif {{color}} == "red" %}
+        {% elif color == "red" %}
             <img src="{% static 'nin/img/red.jpg' %}"/>
 
-        {%elif {{color}} == "orange" %}
+        {% elif color == "orange" %}
             <img src="{% static 'nin/img/orange.jpg' %}"/>
 
-        {%elif {{color}} == "purple" %}
+        {% elif color == "purple" %}
             <img src="{% static 'nin/img/purple.jpg' %}"/>
 
-        {%else}
+        {% else %}
             <img src="{% static 'nin/img/megan.jpg' %}"/>
-
+        {% endif %}
     </body>
 </html>

@@ -1,7 +1,7 @@
 class User(models.Model):
     first_name = models.Charfield(max_length=255)
     last_name = models.Charfield(max_length=255)
-    email = models.Charfield(max_length=255)
+    email = models.Emailfield(max_length=255)
     password = models.Charfield(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(autp_now=True)

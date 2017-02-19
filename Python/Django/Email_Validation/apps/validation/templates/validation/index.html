@@ -1,0 +1,39 @@
+<!-- Created by Jian Zhang @ Coding Dojo, on 02/18/2017 -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Email Validation</title>
+        <style>
+            #wrapper{
+                height:500px;
+                width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top:30px;
+            }
+            #alert{
+                margin-left: auto;
+                margin-right: auto;
+                height:20px;
+                width: 350px;
+                {{request.session.color}}
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="alert">
+                {{request.session.alert}}
+            </div>
+            <div id="main">
+                <form action="/submit" method="post">
+                    {% csrf_token %}
+                    Email: <input type="text" name="email" />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

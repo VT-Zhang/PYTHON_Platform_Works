@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Email Result</title>
+        <style>
+            #alert{
+                height:55px;
+                width: 400px;
+                background-color: green;
+                {{request.session.display}}
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="alert">
+            <p>
+                The email address you entered ({{request.session.em}}) is a VALID email address! Thank you!
+            </p>
+        </div>
+        <div>
+            <h3><u>Email Addresses Entered:</u></h3>
+        </div>
+        <div>
+            {% for email in emails %}
+            <p>
+                {{email.address}} | {{email.created_at}} | <a href="/delete/{{email.id}}">delete</a>
+            </p>
+            {% endfor %}
+        </div>
+        <form action='/goback' method='post'>
+            {% csrf_token %}
+            <input type='submit' value='Go Back' />
+        </form>
+    </body>
+</html>

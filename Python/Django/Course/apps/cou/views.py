@@ -14,7 +14,6 @@ def add(request):
 
 def next(request, id):
     context = {"id": id}
-    # delcou = Course.objects.get(id=id)
     return render(request, "cou/delete.html",context)
 
 def delete(request, id):

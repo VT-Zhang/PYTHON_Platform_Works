@@ -8,11 +8,11 @@
         <h3>Are you sure you want to delete the following course?</h3>
         <form action="/goback" method="post">
             {% csrf_token %}
-            <input style='submit' value='No' />
+            <input type='submit' value='No' />
         </form>
         <form action="/delete/{{id}}" method="post">
             {% csrf_token %}
-            <input style='submit' value='Yes! I want to delete this course' />
+            <input type='submit' value='Yes! I want to delete this course' />
         </form>
     </body>
 </html>

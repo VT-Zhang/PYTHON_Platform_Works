@@ -53,11 +53,10 @@ def register(request):
 
 def login(request):
     user = User.objects.filter(email=request.POST['log_email'])
-    if bcrypt.checkpw(request.POST['log_password'], user[0]['password']) == True:
-    # if bcrypt.hashpw(request.POST['log_password'], user[0]['password']) == user[0]['password']:
+    if bcrypt.checkpw(str(request.POST['log_password']), str(user[0].password)):
         request.session['suc'] = 'You have successfully logged in.'
         request.session['fail'] = ''
         return render(request, 'login/success.html')
     else:
-        request.session['fail'] = 'The email and password you entered do not match!'
+        request.session['fail'] = 'The email and password you entered do not match! Please try again.'
         return redirect('/')

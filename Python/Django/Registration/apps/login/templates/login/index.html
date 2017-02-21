@@ -34,6 +34,8 @@
                 Password: <input type='text' name='log_password' />
                 <input type='submit' value='Login' />
             </form>
+            <br />
+            {{request.session.fail}}
         </div>
         <div id='errors'>
             {{request.session.alert|safe}}

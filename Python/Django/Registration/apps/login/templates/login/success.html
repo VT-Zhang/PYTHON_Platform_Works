@@ -3,9 +3,19 @@
     <head>
         <meta charset="utf-8">
         <title>Success Login</title>
+        <style>
+            #second{
+                color: green;
+            }
+        </style>
     </head>
     <body>
-        You are here, keep working on...
-        {{request.session.suc}}
+        <h1>
+            Success! Welcome, {{request.session.name}}!
+        </h1>
+        <p id="second">
+            {{request.session.suc}}
+        </p>
+
     </body>
 </html>

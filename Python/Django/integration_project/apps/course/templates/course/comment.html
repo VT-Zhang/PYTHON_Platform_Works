@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Comments</title>
+</head>
+<body>
+<h2>Comments:</h2>
+
+<form action='{%url 'course:add_comment' id=course.id}' method="POST">
+{% csrf_token %}
+<p><textarea name="comment" cols="50" rows="10"></textarea></p>
+<p><input type="submit" value="Add comment"></p>
+</form>
+<h3>All Comments:</h3>
+{% for comment in comments %}
+<p>{{comment.comment}}</p>
+{% endfor %}
+</body>
+</html>

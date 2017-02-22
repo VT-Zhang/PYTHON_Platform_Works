@@ -1,0 +1,44 @@
+<!-- Created by Jian Zhang @ Coding Dojo on 02/18/2017 -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Registration</title>
+        <style>
+            #error{
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Django Registration and Login Project</h1>
+        <div id="reg">
+            <h2>Registration</h2>
+            <form action='{%url 'login:register'%}' method='post'>
+                {% csrf_token %}
+                First Name: <input type='text' name='first_name' />
+                Last Name: <input type='text' name='last_name' />
+                Email: <input type='text' name='email' />
+                Password: <input type='text' name='password' />
+                Confirm PW: <input type='text' name='confirm' />
+                <input type='submit' value='Register' />
+            </form>
+        </div>
+        <br />
+        <div id="log">
+            <h2>Login</h2>
+            <form action='{%url 'login:login'%}' method='post'>
+                {% csrf_token %}
+                Email: <input type='text' name='log_email' />
+                Password: <input type='text' name='log_password' />
+                <input type='submit' value='Login' />
+            </form>
+            <br />
+            {{request.session.fail}}
+        </div>
+        <div id='errors'>
+            {{request.session.alert|safe}}
+        </div>
+    </body>
+</html>

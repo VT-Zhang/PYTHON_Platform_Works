@@ -7,7 +7,6 @@
         <title>Course Practice</title>
     </head>
     <body>
-        <div id="new_course">
             <form action="/add" method="post">
                 {% csrf_token %}
                 Name: <input type="text" name="course_name" />
@@ -15,7 +14,6 @@
                 </textarea>
                 <input type="submit" value="Add Course" />
             </form>
-        </div>
         <div id="main">
             <h3>Courses</h4>
             <table>

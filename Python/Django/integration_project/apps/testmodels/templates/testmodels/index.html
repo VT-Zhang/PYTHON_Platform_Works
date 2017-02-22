@@ -1,0 +1,55 @@
+<!-- Created by Jian Zhang @ Coding Dojo on 02/21/2017 -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Integration </title>
+    </head>
+    <body>
+        <form action='{%url 'testmodels:add'%}' method='post'>
+            {% csrf_token %}
+            <select name='Users'>
+                {% for user in users %}
+                <option value='{{user.id}}'>
+                    {{user.first_name}} {{user.last_name}}
+                </option>
+                {% endfor %}
+            </select>
+            <select name='Courses'>
+                {% for course in courses %}
+                <option value='{{course.id}}'>
+                    {{course.name}}
+                </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Add User To Course">
+        </form>
+        <table>
+            <tr>
+                <td>
+                    Course
+                </td>
+                <td>
+                    Title
+                </td>
+                <td>
+                    Number of Users
+                </td>
+            </tr>
+            {% for course in courses %}
+            <tr>
+                <td>
+                    {{course.id}}
+                </td>
+                <td>
+                    {{course.name}}
+                </td>
+                <td>
+                    Number of Users
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

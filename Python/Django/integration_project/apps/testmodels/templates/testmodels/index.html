@@ -9,14 +9,14 @@
     <body>
         <form action='{%url 'testmodels:add'%}' method='post'>
             {% csrf_token %}
-            <select name='Users'>
+            <select name='users'>
                 {% for user in users %}
                 <option value='{{user.id}}'>
                     {{user.first_name}} {{user.last_name}}
                 </option>
                 {% endfor %}
             </select>
-            <select name='Courses'>
+            <select name='courses'>
                 {% for course in courses %}
                 <option value='{{course.id}}'>
                     {{course.name}}
@@ -27,27 +27,15 @@
         </form>
         <table>
             <tr>
-                <td>
-                    Course
-                </td>
-                <td>
-                    Title
-                </td>
-                <td>
-                    Number of Users
-                </td>
+                <th>Course</th>
+                <th>Title</th>
+                <th>Number of Users</th>
             </tr>
-            {% for course in courses %}
+            {% for course in register %}
             <tr>
-                <td>
-                    {{course.id}}
-                </td>
-                <td>
-                    {{course.name}}
-                </td>
-                <td>
-                    Number of Users
-                </td>
+                <td>{{course.course.id}}</td>
+                <td>{{course.course.name}}</td>
+                <td>Number of Users</td>
             </tr>
             {% endfor %}
         </table>

@@ -3,16 +3,51 @@
     <head>
         <meta charset="utf-8">
         <title>Books Home</title>
+        <style>
+        #wrapper{
+            display: flex;
+        }
+
+        #left{
+            margin-left: 20px;
+        }
+        #right{
+            height:360px;
+            width:300px;
+            text-align: center;
+            border: 1px solid black;
+            margin-left: 100px;
+            margin-top: 20px;
+        }
+        #window{
+            overflow-y:scroll;
+            height:300px;
+            width:300px;
+        }
+
+        </style>
     </head>
     <body>
-        <h2>Welcome, {{request.session.name}}</h2>
-        <a href='{%  url 'review:goto' %}'>Add Book and Review</a> | <a href='{%  url 'review:logout' %}'>Logout</a>
-        <br />
-        <h3>Recent Book Reviews</h3>
-        {% for book in books %}
-        <p><i><a href='{%  url 'review:book' id=book.id %}'>{{book.title}}</a></i></p>
-        <p>says: {{book.review}}</p>
-        <p>{{book.rating}} stars</p>
-        {% endfor %}
+        <div id="wrapper">
+            <div id="left">
+                <h2>Welcome, {{request.session.name}}, the {{request.session.alias}} :)</h2>
+                <a href='{%  url 'review:goto' %}'>Add Book and Review</a> | <a href='{%  url 'review:logout' %}'>Logout</a>
+                <br />
+                <h3>Recent Book Reviews</h3>
+                {% for review in reviews %}
+                <p><i><a href='{%  url 'review:book' id=review.book_id %}'>{{review.book.title}}</a></i></p>
+                <BLOCKQUOTE><p><a href='{%  url 'review:user' id=review.user_id %}'>{{review.user.name}}</a> says: {{review.review}}</p>
+                <p>{{review.rating}} stars</p></BLOCKQUOTE>
+                {% endfor %}
+            </div>
+            <div id="right">
+                <h3>Other Books with Reviews</h3>
+                <div id="window">
+                    {% for boob in boobs %}
+                    <p><a href='{%  url 'review:book' id=boob.id %}'>{{boob.title}}</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </body>
 </html>

@@ -7,7 +7,13 @@
     <body>
         <a href='{%  url 'review:main' %}'>Home</a> | <a href='{%  url 'review:goto' %}'>Add Book and Review</a> | <a href='{%  url 'review:logout' %}'>Logout</a>
         <p>User Alias: {{user.alias}}</p>
-        <p>name: {{user.name}}</p>
+        <p>Name: {{user.name}}</p>
         <p>Email: {{user.email}}</p>
+        <p>Total reviews: {{counter}}</p>
+        <br />
+        <p><i>{{user.name}}</i> Posted Reviews on the following books:</p>
+        {% for review in reviews %}
+        <p><a href='{%  url 'review:book' id=review.book_id %}'>{{review.book.title}}</a></p>
+        {% endfor %}
     </body>
 </html>

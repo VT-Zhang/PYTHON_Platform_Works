@@ -12,6 +12,10 @@ def register(request):
     if request.method == 'POST':
         request.session['alert'] = ''
         validation = True
+        preuser = User.objects.filter(email=request.POST['email'])
+        if preuser:
+            request.session['alert'] = 'The user already exists, please try another email.'
+            return redirect('/')
 
         if len(request.POST['name']) < 2 or len(request.POST['alias']) < 2:
             request.session['alert'] += '<p>Error(s):</p><p>Names cannot be less than 2 letter.</p>'
@@ -38,64 +42,101 @@ def register(request):
         if validation == True:
             hashed = bcrypt.hashpw(request.POST['password'].encode(encoding="utf-8", errors="strict"), bcrypt.gensalt())
             user = User.objects.create(name=request.POST['name'], alias=request.POST['alias'], email=request.POST['email'], password=hashed)
-            print user.id
-            request.session['id'] = user.id
+            request.session['email'] = request.POST['email']
+            request.session['user_id'] = user.id
             request.session['name'] = user.name
+            request.session['alias'] = user.alias
             context = {
-                "books": Book.objects.all().order_by('-created_at')[:3]
+                "user": User.objects.get(email=request.POST['email']),
+                "books": Book.objects.all().order_by('-created_at')[:5],
+                "reviews": Review.objects.all().order_by('-created_at')[:5],
+                "boobs": Book.objects.all().order_by('title')
             }
             return render(request, 'review/main.html', context)
 
 
 def login(request):
     user = User.objects.filter(email=request.POST['log_email'])
+    if not user:
+        request.session['fail'] = "The email you entered does not exist, please register!"
+        return redirect('/')
+
     if bcrypt.checkpw(str(request.POST['log_password']), str(user[0].password)):
         request.session['fail'] = ''
         context = {
-            "books": Book.objects.all().order_by('-created_at')[:3]
+            "user": User.objects.get(email=request.POST['log_email']),
+            "books": Book.objects.all().order_by('-created_at')[:5],
+            "reviews": Review.objects.all().order_by('-created_at')[:5],
+            "boobs": Book.objects.all().order_by('title')
         }
+        request.session['user_id'] = user[0].id
+        request.session['name'] = user[0].name
+        request.session['alias'] = user[0].alias
+        request.session['email'] = request.POST['log_email']
         return render(request, 'review/main.html', context)
+
     else:
         request.session['fail'] = 'The email and password you entered do not match! Please try again.'
         return redirect('/')
 
-def goto(request):
-    return render(request, 'review/review.html')
-
-def create(request):
-    if request.method == 'POST':
-        Book.objects.create(title=request.POST['title'], author=request.POST['author'], review=request.POST['review'], rating=request.POST['rating'])
-        context = {
-            "books": Book.objects.all().order_by('-created_at')[:3]
-        }
-        return render(request, 'review/main.html', context)
 
 def main(request):
+    user = User.objects.filter(email=request.session['email'] )
+    print request.session['user_id']
+
     context = {
-        "books": Book.objects.all().order_by('-created_at')[:3]
+        "books": Book.objects.all().order_by('-created_at')[:5],
+        "reviews": Review.objects.all().order_by('-created_at')[:5],
+        "boobs": Book.objects.all().order_by('title')
     }
     return render(request, 'review/main.html', context)
 
-def logout(request):
-    request.session.clear()
-    return redirect('/')
+
+def goto(request):
+    return render(request, 'review/review.html')
+
+
+def create(request):
+    if request.method == 'POST':
+        book = Book.objects.create(title=request.POST['title'], author=request.POST['author'])
+        request.session['book_id'] = book.id
+        Review.objects.create(review=request.POST['review'], rating=request.POST['rating'], user_id=request.session.get('user_id'), book_id=request.session['book_id'])
+        context = {
+            "books": Book.objects.all().order_by('-created_at')[:5],
+            "reviews": Review.objects.all().order_by('-created_at')[:5],
+            "boobs": Book.objects.all().order_by('title')
+        }
+        return render(request, 'review/main.html', context)
+
 
 def book(request, id):
     context = {
-        "book": Book.objects.get(id=id)
+        "book": Book.objects.get(id=id),
+        "reviews": Review.objects.filter(book_id=id).order_by('-created_at')
     }
     return render(request, 'review/book.html', context)
 
 def add(request, id):
     if request.method == 'POST':
         context = {
-            "book": Book.objects.get(id=id)
+            "book": Book.objects.get(id=id),
+            "reviews": Review.objects.filter(book_id=id).order_by('-created_at')
         }
+        Review.objects.create(review=request.POST['review'], rating=request.POST['rating'], user_id=request.session['user_id'], book_id=id)
         return render(request, 'review/book.html', context)
 
 def user(request, id):
-    if request.method == 'POST':
-        context = {
-            "user": User.objects.get(id=id)
-        }
-        return render(request, 'review/user.html', context)
+    counter = Review.objects.filter(user_id=id).count()
+    context = {
+        "user": User.objects.get(id=id),
+        "reviews": Review.objects.filter(user_id=id).order_by('-created_at'),
+        "counter": counter
+    }
+    return render(request, 'review/user.html', context)
+
+def logout(request):
+    request.session.pop('user_id')
+    request.session.pop('name')
+    request.session.pop('alias')
+    request.session.pop('email')
+    return redirect('/')

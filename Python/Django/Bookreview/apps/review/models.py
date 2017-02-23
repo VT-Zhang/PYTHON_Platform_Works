@@ -13,12 +13,13 @@ class User(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
-    review = models.TextField(max_length=1000)
-    rating = models.IntegerField(max_length=2)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 class Review(models.Model):
     review = models.TextField(max_length=1000)
+    rating = models.IntegerField(max_length=2)
     user = models.ForeignKey(User, related_name='useruser')
     book = models.ForeignKey(Book, related_name='bookbook')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

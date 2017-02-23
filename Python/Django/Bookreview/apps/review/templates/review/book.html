@@ -5,12 +5,19 @@
         <title>Book Details</title>
     </head>
     <body>
-        <h3>{{book.title}}</h3>
+        <h3><i>{{book.title}}</i></h3>
         <p>Author: {{book.author}}</p>
-        <p>says: <i>{{book.review}}</i></p>
+        <a href='{%  url 'review:main' %}'>Home</a> | <a href='{%  url 'review:logout' %}'>Logout</a>
+        <br />
+        <h3>Reviews:</h3>
+        {% for review in reviews %}
+        <hr />
+        <p>{{review.rating}} stars</p>
+        <p><a href='{%  url 'review:user' id=review.user_id %}'>{{review.user.name}}</a> says: <i>{{review.review}}</i></p>
+        <p><i>Posted on {{review.created_at}} </i></p>
+        {% endfor %}
 
-
-        <form action='{%  url 'review:add' id=book.id%}' method='post'>
+        <form action='{% url 'review:add' id=book.id %}' method='post'>
             {% csrf_token %}
             <p>Review: <textarea name="review" cols="50" rows="10"></textarea></p>
             <p>Rating: <select name="rating">

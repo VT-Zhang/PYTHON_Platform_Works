@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <title>Book Review Registration and Login Page</title>
         <style>
-            #error{
+            .errors{
                 color:red;
             }
         </style>
@@ -26,6 +26,9 @@
                 <p><input type='submit' value='Register' /></p>
             </form>
         </div>
+        <div class='errors'>
+            {{request.session.alert|safe}}
+        </div>
         <br />
         <div id="log">
             <h2>Login</h2>
@@ -36,10 +39,10 @@
                 <p><input type='submit' value='Login' /></p>
             </form>
             <br />
-            {{request.session.fail}}
+            <div class="errors">
+                {{request.session.fail}}
+            </div>
         </div>
-        <div id='errors'>
-            {{request.session.alert|safe}}
-        </div>
+
     </body>
 </html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Books Home</title>
+    </head>
+    <body>
+        <h2>Welcome, {{request.session.name}}</h2>
+        <a href='{%  url 'review:goto' %}'>Add Book and Review</a> | <a href='{%  url 'review:logout' %}'>Logout</a>
+        <br />
+        <h3>Recent Book Reviews</h3>
+        {% for book in books %}
+        <p><i><a href='{%  url 'review:book' id=book.id %}'>{{book.title}}</a></i></p>
+        <p>says: {{book.review}}</p>
+        <p>{{book.rating}} stars</p>
+        {% endfor %}
+    </body>
+</html>

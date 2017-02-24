@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db.models import Count
+from django.contrib import messages
 from .models import User, Book, Review
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -10,33 +11,35 @@ def index(request):
 
 def register(request):
     if request.method == 'POST':
-        request.session['alert'] = ''
+        alert = []
         validation = True
-        preuser = User.objects.filter(email=request.POST['email'])
-        if preuser:
-            request.session['alert'] = 'The user already exists, please try another email.'
-            return redirect('/')
-
+        check_user = User.objects.filter(email=request.POST['email'])
+        if check_user:
+            alert.append('The user already exists, please try another email.')
+            validation = False
         if len(request.POST['name']) < 2 or len(request.POST['alias']) < 2:
-            request.session['alert'] += '<p>Error(s):</p><p>Names cannot be less than 2 letter.</p>'
+            alert.append('Names cannot be less than 2 letters.')
             validation = False
         if str.isalpha(str(request.POST['name'])) == False or str.isalpha(str(request.POST['alias'])) == False:
-            request.session['alert'] += '<p>Names cannot contain any numbers. </p>'
+            alert.append('Names cannot contain any numbers.')
             validation = False
         if len(request.POST['email']) < 1 or len(request.POST['password']) < 1 or len(request.POST['confirm']) < 1:
-            request.session['alert'] += '<p>All fields are required and must not be blank.</p>'
+            alert.append('All fields are required and must not be blank.')
             validation = False
         if not EMAIL_REGEX.match(request.POST['email']):
-            request.session['alert'] += '<p>Invalid email address.</p>'
+            alert.append('Invalid email address.')
             validation = False
         if len(request.POST['password']) < 8:
-            request.session['alert'] += '<p>Password should be 8 or more characters.</p>'
+            alert.append('Password should be 8 or more characters.')
             validation = False
         if request.POST['confirm'] != request.POST['password']:
-            request.session['alert'] += '<p>Passwords do not match.</p>'
+            alert.append('Passwords do not match.')
             validation = False
 
+
         if validation == False:
+            for i in range(0, len(alert)):
+                messages.error(request, alert[i])
             return redirect('/')
 
         if validation == True:
@@ -58,11 +61,10 @@ def register(request):
 def login(request):
     user = User.objects.filter(email=request.POST['log_email'])
     if not user:
-        request.session['fail'] = "The email you entered does not exist, please register!"
+        messages.error(request, "The email you entered does not exist, please register!")
         return redirect('/')
 
     if bcrypt.checkpw(str(request.POST['log_password']), str(user[0].password)):
-        request.session['fail'] = ''
         context = {
             "user": User.objects.get(email=request.POST['log_email']),
             "books": Book.objects.all().order_by('-created_at')[:5],
@@ -76,7 +78,7 @@ def login(request):
         return render(request, 'review/main.html', context)
 
     else:
-        request.session['fail'] = 'The email and password you entered do not match! Please try again.'
+        messages.error(request, 'The email and password you entered do not match! Please try again.')
         return redirect('/')
 
 
@@ -108,6 +110,9 @@ def create(request):
         }
         return render(request, 'review/main.html', context)
 
+def delete(request, id):
+    Review.objects.filter(id=id).delete()
+    return redirect('review:main')
 
 def book(request, id):
     context = {

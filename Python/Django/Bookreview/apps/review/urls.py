@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^book/(?P<id>\d+)$', views.book, name='book'),
     url(r'^add/(?P<id>\d+)$', views.add, name='add'),
     url(r'^user/(?P<id>\d+)$', views.user, name='user'),
+    url(r'^delete/(?P<id>\d+)$', views.delete, name='delete'),
 ]

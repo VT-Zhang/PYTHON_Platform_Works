@@ -18,7 +18,7 @@ class Book(models.Model):
 
 class Review(models.Model):
     review = models.TextField(max_length=1000)
-    rating = models.IntegerField(max_length=2)
+    rating = models.IntegerField()
     user = models.ForeignKey(User, related_name='useruser')
     book = models.ForeignKey(Book, related_name='bookbook')
     created_at = models.DateTimeField(auto_now_add=True)

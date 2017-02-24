@@ -37,7 +37,10 @@
                 {% for review in reviews %}
                 <p><i><a href='{%  url 'review:book' id=review.book_id %}'>{{review.book.title}}</a></i></p>
                 <BLOCKQUOTE><p><a href='{%  url 'review:user' id=review.user_id %}'>{{review.user.name}}</a> says: {{review.review}}</p>
-                <p>{{review.rating}} stars</p></BLOCKQUOTE>
+                <p>Rating: {{review.rating}} stars</p></BLOCKQUOTE>
+                {% if request.session.user_id ==  review.user_id %}
+                <a href="{%url 'review:delete' id=review.id%}">[Delete This Review]</a>
+                {%endif%}
                 {% endfor %}
             </div>
             <div id="right">
